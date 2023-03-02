@@ -1,12 +1,20 @@
-<!DOCTYPE html PUBLIC "-//W3C//DTD XHTML 1.0 Transitional//EN" "http://www.w3.org/TR/xhtml1/DTD/xhtml1-transitional.dtd">
-<html xmlns="http://www.w3.org/1999/xhtml">
+<?php
 
-<head>
-<meta content="text/html; charset=utf-8" http-equiv="Content-Type" x-undefined="" />
-</head>
+session_start();
 
-<body>
+if (!isset($_SESSION['userlogin'])) {
+    header("Location: CustomerAccountPage.php");
+}
 
-</body>
+if (isset($_GET['logout'])) {
+    session_destroy();
+    unset($_SESSION);
+    header("Location: login.php");
+}
 
-</html>
+?>
+
+<p>Welcome to index</p>
+
+
+<a href="CustomerAccountPage.php?logout=true">Logout</a>

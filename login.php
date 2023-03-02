@@ -1,4 +1,11 @@
 <html>
+<?php
+
+if (isset($_SESSION['userlogin'])) {
+	header("Location: CustomerAccountPage.php");
+}
+
+?>
 
 <head>
 	<title>MT ART Shed Repair Login</title>
@@ -58,6 +65,37 @@
 	</script>
 <script src="https://kit.fontawesome.com/bf711c5b73.js" crossorigin="anonymous"></script>
 <script type="text/javascript" src="https://cdn.jsdelivr.net/npm/bootstrap@5.2.3/dist/js/bootstrap.min.js"></script>
+
+<script>
+	$(function () {
+		$('#login').click(function (e) {
+			var valid = this.form.checkValidity();
+
+			if (valid) {
+				var username = $('#username').val();
+				var password = $('#password').val();
+			}
+
+			e.preventDefault();
+
+			$.ajax({
+				type: 'POST',
+				url: 'jslogin.php',
+				data: { username: username, password: password },
+				success: function (data) {
+					if ($.trim(data) === "1") {
+						setTimeout(' window.location.href =  "CustomerAccountPage.php"', 1000);
+					}
+				},
+				error: function (data) {
+					alert('there were errors while doing operation');
+				}
+			});
+
+		});
+	});
+</script>
+
 </body>
 
 </html>
