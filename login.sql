@@ -34,7 +34,6 @@ CREATE TABLE IF NOT EXISTS `users` (
   `email` varchar(64) COLLATE utf8_unicode_ci NOT NULL,
   `phone_number` varchar(16) COLLATE utf8_unicode_ci NOT NULL,
   `address` varchar(128) COLLATE utf8_unicode_ci NOT NULL,
-  `username` varchar(16) COLLATE utf8_unicode_ci NOT NULL,
   `password` varchar(32) COLLATE utf8_unicode_ci NOT NULL,
   `confirmcode` varchar(32) COLLATE utf8_unicode_ci DEFAULT NULL
 ) ENGINE=InnoDB DEFAULT CHARSET=utf8 COLLATE=utf8_unicode_ci;
