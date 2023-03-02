@@ -16,7 +16,7 @@
 <form action="CustomerAccountConnection.php" method="post">
 	Welcome, <?php echo "example_user" ?>!<br />
 	</form>
-<form action="" method="post">
+<form action="ChatPage.html" method="post">
 <button type="button" name="button" id="chat" class="btn login_btn">Chat</button>
     
 </form>
