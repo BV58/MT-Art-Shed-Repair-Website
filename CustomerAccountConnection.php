@@ -1,6 +1,6 @@
 <?php
 // Connect to the database
-$conn = mysqli_connect("localhost", "username", "password", "users");
+$conn = mysqli_connect("localhost", "name", "password", "users");
 
 // Check for errors
 if (!$conn) {
@@ -8,8 +8,8 @@ if (!$conn) {
 }
 
 // Retrieve the user's account name
-$username = "example_user";
-$sql = "SELECT account_name FROM users WHERE username='$username'";
+$name = "example_user";
+$sql = "SELECT account_name FROM users WHERE name='$name'";
 $result = mysqli_query($conn, $sql);
 
 // Check for errors
