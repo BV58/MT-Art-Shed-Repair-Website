@@ -3,7 +3,7 @@ html {
     margin: 0;
     padding: 0;
     height: 100%;
-    background: #603abc !important;
+    background: #0a0186 !important;
 }
 
 .user_card {
@@ -11,7 +11,7 @@ html {
     width: 350px;
     margin-top: auto;
     margin-bottom: auto;
-    background: #f39c12;
+    background: #0a8f32;
     position: relative;
     display: flex;
     justify-content: center;
@@ -29,7 +29,7 @@ html {
     width: 170px;
     top: -75px;
     border-radius: 50%;
-    background: #60a3bc;
+    background: #000000;
     padding: 10px;
     text-align: center;
 }
@@ -74,5 +74,5 @@ html {
 }
 
 .custom-checkbox .custom-control-input:checked~.custom-control-label::before {
-    background-color: #c0392b !important;
+    background-color: #23c42b !important;
 }

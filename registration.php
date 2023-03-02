@@ -8,6 +8,19 @@ require_once("config.php");
 <head>
     <title>User Registration Page</title>
     <link rel="stylesheet" type="text/css" href="css/bootstrap.min.css">
+    <style>
+        body {
+            background-color: rgb(40, 40, 40);
+        }
+
+        h1 {
+            color: rgb(214, 214, 214);
+        }
+
+        b {
+            color: rgb(214, 214, 214);
+        }
+    </style>
 </head>
 
 <body>
