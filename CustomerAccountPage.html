@@ -8,29 +8,20 @@
 .auto-style1 {
 	text-align: center;
 }
-.auto-style2 {
-	text-align: left;
-}
-.auto-style3 {
-	margin-left: 53px;
-}
-.auto-style4 {
-	margin-left: 6px;
-}
 </style>
 </head>
 
 <body>
 
 <p class="auto-style1"><strong>Customer Account Page </strong></p>
-<p class="auto-style2">Welcome %CustomerName%</p>
-<form action="CustomerAccountPage.php" method="post">
-	<input name="ChatButton" type="button" value="Chat" /><input class="auto-style3" name="AppointmentButton" type="button" value="Appointment" /><br />
-	<br />
-	<input class="auto-style4" name="EditAccountbutton" style="width: 197px" type="button" value="Edit Account" /></form>
-<p>&nbsp;</p>
-<p>&nbsp;</p>
+<form action="CustomerAccountConnection.php" method="post">
+	Welcome, <?php echo $username; ?>!<br />
+	</form>
+<form action="" method="post">
+	<input name="ChatButton" type="button" value="Chat" /></form>
 
-</body>
+<form action="viewAppointments.php" method="post">
+	<input name="Appointmentbtn" type="button" value="Appointments" /></form>
+<form action="" method="post">
+	<input name="EditAccountbutton" style="width: 151px" type="button" value="Edit Account" /></form>
 
-</html>
