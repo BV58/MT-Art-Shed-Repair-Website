@@ -58,6 +58,9 @@ $stmt->close();
 						<td>Email:</td>
 						<td><?=$email?></td>
 					</tr>
+					    <td>Address:</td>
+                        <td><?=$address?></td>
+                    </tr>
 				</table>
 			</div>
 		</div>
