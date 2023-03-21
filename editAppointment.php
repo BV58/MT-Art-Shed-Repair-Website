@@ -44,6 +44,4 @@ $conn->close();
   <br>
   <label for="time">Time:</label>
   <input type="time" id="time" name="time" value="<?php echo $appointment['time']; ?>">
-  <br>
-    <label for="description">:</label>&nbsp;
  
