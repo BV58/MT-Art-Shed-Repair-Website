@@ -3,7 +3,7 @@
 -- https://www.phpmyadmin.net/
 --
 -- Host: 127.0.0.1
--- Generation Time: Mar 28, 2023 at 09:09 PM
+-- Generation Time: Mar 28, 2023 at 09:24 PM
 -- Server version: 10.4.27-MariaDB
 -- PHP Version: 8.2.0
 
@@ -20,6 +20,30 @@ SET time_zone = "+00:00";
 --
 -- Database: `login`
 --
+
+-- --------------------------------------------------------
+
+--
+-- Table structure for table `appointments`
+--
+
+CREATE TABLE `appointments` (
+  `id` int(11) NOT NULL,
+  `name` varchar(128) NOT NULL,
+  `email` varchar(64) NOT NULL,
+  `phoneNum` varchar(16) NOT NULL,
+  `address` varchar(128) NOT NULL,
+  `dateAndTime` datetime(6) NOT NULL,
+  `descrption` mediumtext NOT NULL,
+  `resolved` tinyint(1) NOT NULL DEFAULT 0
+) ENGINE=InnoDB DEFAULT CHARSET=utf8mb4 COLLATE=utf8mb4_general_ci;
+
+--
+-- Dumping data for table `appointments`
+--
+
+INSERT INTO `appointments` (`id`, `name`, `email`, `phoneNum`, `address`, `dateAndTime`, `descrption`, `resolved`) VALUES
+(1, 'Jane Doe', 'janedoe@gmail.com', '8566859001', '18 PennyLane, Voorhees, New Jersey', '2023-03-31 15:23:27.000000', 'My shed needs repairs. The door is falling off. ', 0);
 
 -- --------------------------------------------------------
 
