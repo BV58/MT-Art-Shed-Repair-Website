@@ -1,13 +1,14 @@
 -- phpMyAdmin SQL Dump
--- version 4.4.15.9
--- https://www.phpmyadmin.net
+-- version 5.2.0
+-- https://www.phpmyadmin.net/
 --
--- Host: localhost
--- Generation Time: Feb 16, 2023 at 07:14 PM
--- Server version: 5.6.37
--- PHP Version: 5.6.31
+-- Host: 127.0.0.1
+-- Generation Time: Mar 28, 2023 at 09:09 PM
+-- Server version: 10.4.27-MariaDB
+-- PHP Version: 8.2.0
 
 SET SQL_MODE = "NO_AUTO_VALUE_ON_ZERO";
+START TRANSACTION;
 SET time_zone = "+00:00";
 
 
@@ -23,24 +24,51 @@ SET time_zone = "+00:00";
 -- --------------------------------------------------------
 
 --
+-- Table structure for table `password_resets`
+--
+
+CREATE TABLE `password_resets` (
+  `id` int(11) UNSIGNED NOT NULL,
+  `email` varchar(255) NOT NULL,
+  `token` varchar(255) NOT NULL,
+  `created_at` timestamp NOT NULL DEFAULT current_timestamp()
+) ENGINE=InnoDB DEFAULT CHARSET=utf8mb4 COLLATE=utf8mb4_general_ci;
+
+-- --------------------------------------------------------
+
+--
 -- Table structure for table `users`
 --
-CREATE DATABASE login;
-USE login;
 
-CREATE TABLE IF NOT EXISTS `users` (
+CREATE TABLE `users` (
   `id` int(11) NOT NULL,
-  `name` varchar(128) COLLATE utf8_unicode_ci NOT NULL,
-  `email` varchar(64) COLLATE utf8_unicode_ci NOT NULL,
-  `phone_number` varchar(16) COLLATE utf8_unicode_ci NOT NULL,
-  `address` varchar(128) COLLATE utf8_unicode_ci NOT NULL,
-  `password` varchar(32) COLLATE utf8_unicode_ci NOT NULL,
-  `confirmcode` varchar(32) COLLATE utf8_unicode_ci DEFAULT NULL
+  `name` varchar(128) NOT NULL,
+  `email` varchar(64) NOT NULL,
+  `phone_number` varchar(16) NOT NULL,
+  `address` varchar(128) NOT NULL,
+  `password` varchar(32) NOT NULL,
+  `confirmcode` varchar(32) DEFAULT NULL
 ) ENGINE=InnoDB DEFAULT CHARSET=utf8 COLLATE=utf8_unicode_ci;
+
+--
+-- Dumping data for table `users`
+--
+
+INSERT INTO `users` (`id`, `name`, `email`, `phone_number`, `address`, `password`, `confirmcode`) VALUES
+(1, 'Jane Doe', 'janedoe@gmail.com', '278-856-4444', '', 'password', NULL),
+(2, 'Brendan Veit', 'brendanveit@gmail.com', '8566859001', '', 'password', NULL),
+(3, 'b', 'brendanveit@gmail.com', '86', '', 'password', NULL),
+(4, 'Brendan Veit', 'brendanveit@gmail.com', '8566859001', '', 'password', NULL);
 
 --
 -- Indexes for dumped tables
 --
+
+--
+-- Indexes for table `password_resets`
+--
+ALTER TABLE `password_resets`
+  ADD PRIMARY KEY (`id`);
 
 --
 -- Indexes for table `users`
@@ -53,10 +81,18 @@ ALTER TABLE `users`
 --
 
 --
+-- AUTO_INCREMENT for table `password_resets`
+--
+ALTER TABLE `password_resets`
+  MODIFY `id` int(11) UNSIGNED NOT NULL AUTO_INCREMENT;
+
+--
 -- AUTO_INCREMENT for table `users`
 --
 ALTER TABLE `users`
-  MODIFY `id` int(11) NOT NULL AUTO_INCREMENT;
+  MODIFY `id` int(11) NOT NULL AUTO_INCREMENT, AUTO_INCREMENT=5;
+COMMIT;
+
 /*!40101 SET CHARACTER_SET_CLIENT=@OLD_CHARACTER_SET_CLIENT */;
 /*!40101 SET CHARACTER_SET_RESULTS=@OLD_CHARACTER_SET_RESULTS */;
 /*!40101 SET COLLATION_CONNECTION=@OLD_COLLATION_CONNECTION */;
