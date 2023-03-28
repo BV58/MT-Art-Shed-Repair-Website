@@ -1,37 +1,122 @@
 <?php
-// Connect to database
-$host = "localhost";
-$username = "root";
-$password = "password";
-$database = "login";
-$conn = mysqli_connect($host, $username, $password, $database);
 
-// Get user ID from session or URL parameter
-$user_id = $_SESSION['id']; // or $_GET['id']
+include "config.php";
 
-// Get user data from database
-$query = "SELECT * FROM users WHERE id = $id";
-$result = mysqli_query($conn, $query);
-$user = mysqli_fetch_assoc($result);
+	if(isset($_POST['update'])){
+	
+	$id = $_POST['id'];
+	
+	$name = $_POST['name'];
+	
+	$email = $_POST['email'];
+	
+	$phoneNumber = $_POST['phoneNumber'];
+	
+	$address = $_POST['address'];
+	
+	$password = $_POST['password'];
+	
+	$sql = "UPDATE 'users' SET 
+	'name' = '$name', 'email' = '$email', 'phoneNumber' = '$phoneNumber', 'address' = '$address',
+	'password' = '$password' WHERE 'id' = '$id';
 
-// Handle form submission
-if ($_SERVER['REQUEST_METHOD'] == 'POST') {
-  // Get form data
-  $name = $_POST['name'];
-  $email = $_POST['email'];
-  $password = $_POST['password'];
+	$result = $conn->query($sql);
 
-  // Update user data in database
-  $query = "UPDATE users SET name = '$name', email = '$email'";
-  if (!empty($password)) {
-    $hash = password_hash($password, PASSWORD_DEFAULT);
-    $query .= ", password = '$hash'";
-  }
-  $query .= " WHERE id = $user_id";
-  mysqli_query($conn, $query);
+	if ($result == TRUE){
+		
+		echo "Account updated successfully.";
+		
+	}else{
+		
+		echo echo "Error:" . $sql . "<br>" . $conn->error;
 
-  // Redirect user back to their account page
-  header("Location: account.php");
-  exit();
+	}
+
 }
+
+if(isset($_GET['id'])){
+	
+	$id = $_GET['id'];
+
+	$sql = "SELECT * FROM 'users' WHERE 'id' = '$id'";
+	
+	$result = $conn->query($sql);
+
+	if($result == TRUE){->num_rows > 0){
+		
+		while($row = $result->fetch_assoc()){
+
+			$id = $row['id'];
+
+			$name = $row['name'];
+	
+			$email = $row['email'];
+	
+			$phonenumber = $row['phonenumber'];
+	
+			$address = $row['address'];
+	
+			$password = $row['password'];
+
+		}
+		
 ?>
+
+<h2>User Update Form</h2>
+
+<form method="" method="post">
+
+    <fieldset>
+
+        <legend>Account Information</legend>
+
+        Name:<br>
+
+        <input type="text" name="name" value="<?php echo $name; ?>">
+
+        <input type="hidden" name="id" value="<?php echo $id; ?>">
+
+        <br>
+
+        Email:<br>
+
+		<input type="email" name="email" value="<?php echo $email; ?>">
+
+		<br>
+
+		Phone Number:<br>
+
+		<input type="number" name="phone" value="<?php echo $phoneNumber; ?>">
+
+		<br>
+
+		Address:<br>
+
+		<input type="text" name="address" value="<?php echo $address; ?>">
+
+		<br><br>
+
+		<input type="submit" value="Update"name="update">
+
+	</fieldset>
+
+</form>
+
+</body>
+
+</html>
+
+<?php
+
+}else{
+
+	header("Location: CustomerAccountPage.php");
+
+	}
+}
+
+?>
+
+
+
+
