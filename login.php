@@ -101,5 +101,3 @@ if (isset($_SESSION['userlogin'])) {
 </body>
 
 </html>
-
-<!-- //Connection failed: SQLSTATE[HY000] [1045] Access denied for user 'root'@'localhost' (using password: YES)<br /> <b>Warning</b>: Undefined variable $db in <b>C:\xampp2\htdocs\process.php</b> on line <b>15</b><br /> <br /> <b>Fatal error</b>: Uncaught Error: Call to a member function prepare() on null in C:\xampp2\htdocs\process.php:15 Stack trace: #0 {main} thrown in <b>C:\xampp2\htdocs\process.php</b> on line <b>15</b><br /> -->

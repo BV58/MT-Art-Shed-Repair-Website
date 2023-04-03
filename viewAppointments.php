@@ -43,10 +43,9 @@
 
                     // maybe try something other than email to check.
                     $email = $_SESSION['email'];
+                    if (true) {
 
-                    echo ($email);
-
-
+                    }
                     $sql = "SELECT * FROM appointments WHERE email = '$email'";
                     if ($result = $db->query($sql)) {
                         if ($result->rowCount() > 0) {
