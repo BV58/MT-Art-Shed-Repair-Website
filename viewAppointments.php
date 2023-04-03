@@ -1,47 +1,232 @@
+<!DOCTYPE html>
+<html lang="en">
+
+<head>
+    <meta charset="UTF-8">
+    <title>Appointments</title>
+    <link rel="stylesheet" href="https://stackpath.bootstrapcdn.com/bootstrap/4.5.2/css/bootstrap.min.css">
+    <link rel="stylesheet" href="https://maxcdn.bootstrapcdn.com/font-awesome/4.7.0/css/font-awesome.min.css">
+    <script src="https://code.jquery.com/jquery-3.5.1.min.js"></script>
+    <script src="https://cdn.jsdelivr.net/npm/popper.js@1.16.1/dist/umd/popper.min.js"></script>
+    <script src="https://stackpath.bootstrapcdn.com/bootstrap/4.5.2/js/bootstrap.min.js"></script>
+    <style>
+        .wrapper {
+            width: 600px;
+            margin: 0 auto;
+        }
+
+        table tr td:last-child {
+            width: 120px;
+        }
+    </style>
+    <script>
+        $(document).ready(function () {
+            $('[data-toggle="tooltip"]').tooltip();
+        });
+    </script>
+</head>
+
+<body>
+    <div class="wrapper">
+        <div class="container-fluid">
+            <div class="row">
+                <div class="col-md-12">
+                    <div class="mt-5 mb-3 clearfix">
+                        <h2 class="pull-left">Appointment Details</h2>
+                        <!-- <a href="create.php" class="btn btn-success pull-right"><i class="fa fa-plus"></i> Add New
+                            Appointment</a> -->
+                    </div>
+                    <?php
+                    session_start();
+                    // Include config file
+                    require_once "config.php";
+
+                    // maybe try something other than email to check.
+                    $email = $_SESSION['email'];
+
+                    echo ($email);
+
+
+                    $sql = "SELECT * FROM appointments WHERE email = '$email'";
+                    if ($result = $db->query($sql)) {
+                        if ($result->rowCount() > 0) {
+                            echo '<table class="table table-bordered table-striped">';
+                            echo "<thead>";
+                            echo "<tr>";
+                            echo "<th>ID Number</th>";
+                            echo "<th>Name</th>";
+                            echo "<th>Email</th>";
+                            echo "<th>Phone Number</th>";
+                            echo "<th>Address</th>";
+                            echo "<th>Date and Time</th>";
+                            echo "<th>Description</th>";
+                            echo "<th>Resolved</th>";
+                            echo "<th>Action</th>";
+                            echo "</tr>";
+                            echo "</thead>";
+                            echo "<tbody>";
+                            while ($row = $result->fetch()) {
+                                echo "<tr>";
+                                echo "<td>" . $row['id'] . "</td>";
+                                echo "<td>" . $row['name'] . "</td>";
+                                echo "<td>" . $row['email'] . "</td>";
+                                echo "<td>" . $row['phoneNum'] . "</td>";
+                                echo "<td>" . $row['address'] . "</td>";
+                                echo "<td>" . $row['dateAndTime'] . "</td>";
+                                echo "<td>" . $row['description'] . "</td>";
+                                echo "<td>" . $row['resolved'] . "</td>";
+                                echo "<td>";
+                                //add action to bring to updateAccount page
+                                echo '<a href="update.php?id=' . $row['id'] . '" class="mr-3" title="Update Record" data-toggle="tooltip"><span class="fa fa-pencil"></span></a>';
+                                echo '<a href="delete.php?id=' . $row['id'] . '" title="Delete Record" data-toggle="tooltip"><span class="fa fa-trash"></span></a>';
+                                echo "</td>";
+                                echo "</tr>";
+                            }
+                            echo "</tbody>";
+                            echo "</table>";
+                            // Free result set
+                            unset($result);
+                        } else {
+                            echo '<div class="alert alert-danger"><em>No records were found.</em></div>';
+                        }
+                    } else {
+                        echo "Oops! Something went wrong. Please try again later.";
+                    }
+
+                    // Close connection
+                    //unset($db);
+                    ?>
+                </div>
+            </div>
+        </div>
+    </div>
+</body>
+
+</html>
+
+
 <?php
+//session_start();
+//include "config.php";
+//add check here for username/session
 
-// Connect to MySQL database
-// $servername = "localhost";
-// $username = "username";
-// $password = "password";
-// $dbname = "myDB";
 
-// $conn = new mysqli($servername, $username, $password, $dbname);
 
-// // Check connection
-// if ($conn->connect_error) {
-//   die("Connection failed: " . $conn->connect_error);
-// }
+//$temp = $_SESSION["email"];
+//$sql = "SELECT * FROM appointments"; // WHERE email = " . $temp;
 
-// // Validate user's account information
-// if ($_SERVER["REQUEST_METHOD"] == "POST") {
-//   $username = $_POST["username"];
-//   $password = $_POST["password"];
+//$result = $db->query($sql);
 
-//   $sql = "SELECT * FROM accounts WHERE username='$username' AND password='$password'";
-//   $result = $conn->query($sql);
+//?>
 
-//   if ($result->num_rows == 1) {
-//     // User is authenticated, retrieve their appointments
-//     $account = $result->fetch_assoc();
-//     $account_id = $account["id"];
+<!--<!DOCTYPE html>
 
-//     $sql = "SELECT * FROM appointments WHERE account_id=$account_id";
-//     $result = $conn->query($sql);
+ <html>
 
-//     // Display appointments on HTML table
-//     echo "<h1>Appointments for ".$account["name"]."</h1>";
-//     echo "<table>";
-//     echo "<tr><th>Date</th><th>Time</th><th>Location</th></tr>shedType</th><th>shedColor</th><th>AdditionalRequirements";
-//     while($row = $result->fetch_assoc()) {
-//       // echo "<tr><td>".$row["date"]."</td><td>".$row["time"]."</td><td>".$row["location"]."</td></tr>".$row["shedType"]."</td></tr>".$row["shedColor"]"</td></tr>".$row["additionalRequirements"];
-//     }
-//     echo "</table>";
-//   } else {
-//     echo "Invalid username or password";
-//   }
-// }
+<head>
 
-// $conn->close(); 
+    <title>View Appointments Page</title>
 
-?>
+    <link rel="stylesheet" href="https://maxcdn.bootstrapcdn.com/bootstrap/3.4.0/css/bootstrap.min.css">
+
+</head>
+
+<body>
+
+    <div class="container">
+
+        <h2>Upcoming Appointments</h2>
+
+        <table class="table">
+
+            <thead>
+
+                <tr>
+
+                    <th>ID</th>
+
+                    <th>Name</th>
+
+                    <th>Email</th>
+
+                    <th>Phone Number</th>
+
+                    <th>Addres</th>
+
+                    <th>Date</th>
+
+                    <th>Time</th>
+
+                    <th>Description</th>
+
+                    <th>Resolved</th>
+
+                    <th>Action</th>
+
+                </tr>
+
+            </thead>
+
+            <tbody>
+
+                <?php
+
+                if ($result->num_rows > 0) {
+
+                    while ($row = $result->fetch_assoc()) {
+
+                        ?>
+
+                        <tr>
+
+                            <td>
+                                <?php echo $row['id']; ?>
+                            </td>
+
+                            <td>
+                                <?php echo $row['name']; ?>
+                            </td>
+
+                            <td>
+                                <?php echo $row['email']; ?>
+                            </td>
+
+                            <td>
+                                <?php echo $row['phoneNum']; ?>
+                            </td>
+
+                            <td>
+                                <?php echo $row['address']; ?>
+                            </td>
+                            <td>
+                                <?php echo $row['dateAndTime']; ?>
+                            </td>
+                            <td>
+                                <?php echo $row['dateAndTime']; ?>
+                            </td>
+                            <td>
+                                <?php echo $row['description']; ?>
+                            </td>
+                            <td>
+                                <?php echo $row['resolved']; ?>
+                            </td>S
+                            <td><a class="btn btn-info" href="update.php?id=<?php echo $row['id']; ?>">Edit</a>&nbsp;<a
+                                    class="btn btn-danger" href="delete.php?id=<?php echo $row['id']; ?>">Delete</a></td>
+
+                        </tr>
+
+                    <?php }
+
+                }
+
+                ?>
+
+            </tbody>
+
+        </table>
+
+    </div>
+
+</body>
+
+</html> -->

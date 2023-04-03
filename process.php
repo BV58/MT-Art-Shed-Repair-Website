@@ -1,7 +1,7 @@
 <?php
 require_once('config.php');
-?>
-<?php
+
+
 
 if (isset($_POST)) {
 
@@ -22,3 +22,4 @@ if (isset($_POST)) {
 } else {
     echo 'No data';
 }
+?>

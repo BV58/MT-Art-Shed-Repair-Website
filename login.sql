@@ -34,7 +34,7 @@ CREATE TABLE `appointments` (
   `phoneNum` varchar(16) NOT NULL,
   `address` varchar(128) NOT NULL,
   `dateAndTime` datetime(6) NOT NULL,
-  `descrption` mediumtext NOT NULL,
+  `description` mediumtext NOT NULL,
   `resolved` tinyint(1) NOT NULL DEFAULT 0
 ) ENGINE=InnoDB DEFAULT CHARSET=utf8mb4 COLLATE=utf8mb4_general_ci;
 

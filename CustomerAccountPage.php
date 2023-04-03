@@ -3,20 +3,27 @@
 session_start();
 
 // Check if user is logged in and name is set
-if (!isset($_SESSION['userlogin']) || !isset($_SESSION['name'])) {
-        header('Location: login.php');
-        exit();
-}
-if (isset($_SESSION['userlogin'])){
+if (!isset($_SESSION['userlogin'])) { //|| !isset($_SESSION['name'])) {
+    header('Location: login.php');
+    exit();
 
-$name = $_SESSION['name'];
+}
+//if (isset($_SESSION['userlogin'])){
+
+$name = $_SESSION['userlogin'];
 include "config.php";
 
-$sql = "SELECT * FROM users WHERE name = '$name'";
-
+$sql = "SELECT * FROM users WHERE name = :name";
 $stmt = $db->prepare($sql);
-$stmt->execute();
+$stmt->bindParam(':name', $name);
+if (!$stmt->execute()) {
+    // handle the error here, e.g. log it or display an error message
+    die("Error executing query: " . $stmt->errorInfo()[2]);
+}
 $row = $stmt->fetch(PDO::FETCH_ASSOC);
+
+$array = $_SESSION['userlogin'];
+
 
 
 
@@ -43,58 +50,60 @@ $row = $stmt->fetch(PDO::FETCH_ASSOC);
         </div>
     </nav>
     <div class="content">
-    	
-    
-        <h2>Hello, <?php echo $row['name'];?></h2>
+
+
+        <h2>Hello,
+            <?php echo is_array($array) && isset($array['name']) ? $array['name'] : ''; ?>
+        </h2>
+        </h2>
 
         <div>
             <p>Your account details are below:</p>
             <table>
-                      	
+
                 <tr>
                     <td>Name:</td>
-                    <td><?php echo $row['name'];?></td>
+                    <td>
+                        <?php echo is_array($array) && isset($array['name']) ? $array['name'] : ''; ?>
+                    </td>
+
                 </tr>
                 <tr>
                     <td>Password:</td>
-                    <td><?php echo $row['password'];?></td>
+                    <td>
+                        <?php echo is_array($array) && isset($array['password']) ? $array['password'] : ''; ?>
+                    </td>
                 </tr>
                 <tr>
                     <td>Email:</td>
-                    <td><?php echo $row['email'];?></td>
+                    <td>
+                        <?php echo is_array($array) && isset($array['email']) ? $array['email'] : ''; ?>
+                    </td>
                 </tr>
                 <tr>
-                	<td>Address:</td>
-                	<td><?php echo $row['address'];?></td>
+                    <td>Address:</td>
+                    <td>
+                        <?php echo is_array($array) && isset($array['address']) ? $array['address'] : ''; ?>
+                    </td>
                 </tr>
                 <tr>
                     <td>Phone Number:</td>
-                    <td><?php echo $row['phoneNumber'];?></td>
+                    <td>
+                        <?php echo is_array($array) && isset($array['phone_number']) ? $array['phone_number'] : ''; ?>
+                    </td>
                 </tr>
             </table>
         </div>
     </div>
-    
 
-<div>
-	<button onclick= ""> Appointments</button>
 
-	
-	<button onclick= "location.href='update_account.php'"> Edit Account</button>
-</div>
+    <div>
+        <button onclick="location.href='viewAppointments.php'"> Appointments</button>
+
+
+        <button onclick="location.href='update_account.php'"> Edit Account</button>
+    </div>
 
 </body>
+
 </html>
-
-
-
-<?php
-
-}else{
-
-	header("location: login.php");
- 
- 	exit();
-}
-
-?>
