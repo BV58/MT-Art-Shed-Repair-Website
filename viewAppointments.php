@@ -40,13 +40,16 @@
                     session_start();
                     // Include config file
                     require_once "config.php";
-
-                    // maybe try something other than email to check.
                     $email = $_SESSION['email'];
-                    if (true) {
 
+                    $temp = "SELECT * FROM users WHERE email = '$email'";
+                    $result2 = $db->query($temp);
+                    $row = $result2->fetch();
+                    if ($row['authLevel'] == 1) {
+                        $sql = "SELECT * FROM appointments";
+                    } else {
+                        $sql = "SELECT * FROM appointments WHERE email = '$email'";
                     }
-                    $sql = "SELECT * FROM appointments WHERE email = '$email'";
                     if ($result = $db->query($sql)) {
                         if ($result->rowCount() > 0) {
                             echo '<table class="table table-bordered table-striped">';
