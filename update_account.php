@@ -10,7 +10,7 @@ $conn = mysqli_connect($host, $username, $password, $database);
 $user_id = $_SESSION['id']; // or $_GET['id']
 
 // Get user data from database
-$query = "SELECT * FROM users WHERE id = $id";
+$query = "SELECT * FROM users WHERE id = $user_id";
 $result = mysqli_query($conn, $query);
 $user = mysqli_fetch_assoc($result);
 
