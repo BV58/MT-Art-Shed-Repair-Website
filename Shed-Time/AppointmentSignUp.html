@@ -1,0 +1,44 @@
+﻿<html>
+<head>
+  <title>New Appointment</title>
+</head>
+<body>
+  <h1>New Appointment</h1>
+  <form method="post" action="create_appointment.php">
+    <label for="date">Date:</label>
+    <br>
+    <input type="date" name="date" required><br><br>
+
+    <label for="time">Time:</label>
+    <br>
+    <input type="time" name="time" required><br><br>
+
+    <label for="location">Location:<br></label>
+    <input type="text" name="location" required><br><br>
+    <label for="shedType">Shed Type:</label><br>
+	  <select name="ShedTypeOptions" style="width: 119px">
+	  <option></option>
+	  <option>Custom(Specify in Additional Requirements</option>
+	  <option>The Barn</option>
+	  <option>The Barn (Short)</option>
+	  <option>The A-Frame</option>
+	  <option>The saltbox</option>
+	  <option>The lean-to</option>
+	  <option>The studio</option>
+	  </select><br><br>Shed Color:<br>
+	  <select name="ShedColorOptions" style="width: 141px">
+	  <option></option>
+	  <option>Blue</option>
+	  <option>Green</option>
+	  <option>Custom(Specify in Additional Requirements</option>
+	  <option>Red</option>
+	  <option>Yellow</option>
+	  <option>Grey</option>
+	  </select><br><br>
+	  <label for="additionalRequirements">Additonal Requirements</label><br>
+	  <textarea cols="20" name="TextArea1" rows="2"></textarea><br><br>
+
+    <input type="submit" value="Create Appointment">
+  </form>
+</body>
+</html>
