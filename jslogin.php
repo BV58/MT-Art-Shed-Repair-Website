@@ -13,7 +13,7 @@ if ($result) {
     $user = $stmselect->fetch(PDO::FETCH_ASSOC);
     if ($stmselect->rowCount() > 0) {
         $_SESSION['userlogin'] = $user;
-        $_SESSION['phoneNum'] = $username;
+        $_SESSION['email'] = $username;
         echo '1';
     } else {
         echo 'fail';
