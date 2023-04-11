@@ -51,7 +51,7 @@ if (isset($_SESSION['userlogin'])) {
 			</form>
 			<div class="mt-4">
 				<div class="d-flex justify-content-center links">
-					Don't have an account?  <a href="registration.php" class="ml-2">    Sign Up</a>
+					Don't have an account? <a href="registration.php" class="ml-2"> Sign Up</a>
 				</div>
 				<div class="d-flex justify-content-center">
 					<a href="registration.php">Forgot your password?</a>
@@ -85,6 +85,8 @@ if (isset($_SESSION['userlogin'])) {
 				success: function (data) {
 					if ($.trim(data) === "1") {
 						setTimeout(' window.location.href =  "CustomerAccountPage.php"', 1000);
+					} else {
+						alert("Username or password is incorrect.");
 					}
 				},
 				error: function (data) {
