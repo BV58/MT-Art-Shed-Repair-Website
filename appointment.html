@@ -1,0 +1,102 @@
+<html lang="en">
+<head>
+  <title>Create Appointment.</title>
+  <link rel="stylesheet" type="text/css" href="appointment.css" />
+  <link rel="icon" type="image/x-icon" href="\images\favicon.ico">
+</head>
+
+<body>
+
+   <!-- NAVI HEADER -->
+   <section id="header">
+    <div class="header container">
+      <div class="nav-bar">
+        <div class="brand">
+          <a href="#hero">
+            <h1><span>MT ART</span> SHED REPAIR</h1>
+          </a>
+        </div>
+        <div class="nav-list">
+          <div class="sidebar">
+            <div class="bar"></div>
+          </div>
+          <ul>
+            <li><a href="index.html" data-after="Home">Home</a></li>
+            <li><a href="index.html#services" data-after="Service">Services</a></li>
+            <li><a href="index.html#about" data-after="About">About</a></li>
+            <li><a href="index.html#contact" data-after="Contact">Contact</a></li>
+            <li><a href="#login" data-after="LOG IN">Log In</a></li>
+            <li><a href="#FAQ" data-after="FAQ">FAQ</a></li>
+          </ul>
+        </div>
+      </div>
+    </div>
+  </section>
+  <!-- END OF NAVI HEADER -->
+
+
+
+
+
+  <!-- APPOINTMENT FORM SECTION -->
+  
+  <section id="form">
+  <div class="form container">
+    <div>
+      <h1>&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;Create your appointment!</h1>
+      <h2>&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;Our team members will visit you for a free estimate!</h2>
+    </div>
+  <form action="" method="POST">
+  
+    <fieldset>
+  
+      <legend>Personal information:</legend>
+  
+      First name:<br>
+  
+      <input type="text" name="firstname">
+  
+      <br>
+  
+      Last name:<br>
+  
+      <input type="text" name="lastname">
+  
+      <br>
+  
+      Email:<br>
+  
+      <input type="email" name="email">
+  
+      <br>
+  
+      Password:<br>
+  
+      <input type="password" name="password">
+
+      <label for="appointment_description">Appointment Description:</label>
+        <textarea id="appointment_description" name="appointment_description" placeholder="Roof repair after tree fall damage."></textarea>
+        <label for="date">Date:</label>
+        <input type="date" name="date">
+        <br>
+        <label for="time">Time:</label>
+        <input type="time" name="time">
+
+        <button type="submit"><p>Create!</p></button>
+        <a href= "CHANGE ME"><p>Already have an account? Sign In!</p></button></a>
+    </fieldset>
+    
+  </form>
+  
+  </section>
+  </div>
+    <!-- END APPOINTMENT FORM SECTION -->
+  </body>
+  
+  </html>
+
+  <script src="./app.js"></script>
+
+</body>
+
+</html>
