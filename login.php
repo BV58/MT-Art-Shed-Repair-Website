@@ -54,7 +54,7 @@ if (isset($_SESSION['userlogin'])) {
 					Don't have an account?  <a href="registration.php" class="ml-2">    Sign Up</a>
 				</div>
 				<div class="d-flex justify-content-center">
-					<a href="registration.php">Forgot your password?</a>
+					<a href="reset_password.php">Forgot your password?</a>
 				</div>
 			</div>
 		</div>
