@@ -11,8 +11,9 @@
     <script src="https://stackpath.bootstrapcdn.com/bootstrap/4.5.2/js/bootstrap.min.js"></script>
     <style>
         .wrapper {
-            width: 600px;
+            width: 100%;
             margin: 0 auto;
+
         }
 
         table tr td:last-child {
@@ -33,8 +34,9 @@
                 <div class="col-md-12">
                     <div class="mt-5 mb-3 clearfix">
                         <h2 class="pull-left">Appointment Details</h2>
-                        <!-- <a href="create.php" class="btn btn-success pull-right"><i class="fa fa-plus"></i> Add New
-                            Appointment</a> -->
+                        <a href="appointment.html" class="btn btn-success pull-right"><i class="fa fa-plus"></i> Add
+                            New
+                            Appointment</a>
                     </div>
                     <?php
                     session_start();
@@ -60,7 +62,8 @@
                             echo "<th>Email</th>";
                             echo "<th>Phone Number</th>";
                             echo "<th>Address</th>";
-                            echo "<th>Date and Time</th>";
+                            echo "<th>Date</th>";
+                            echo "<th>Time</th>";
                             echo "<th>Description</th>";
                             echo "<th>Resolved</th>";
                             echo "<th>Action</th>";
@@ -74,7 +77,8 @@
                                 echo "<td>" . $row['email'] . "</td>";
                                 echo "<td>" . $row['phoneNum'] . "</td>";
                                 echo "<td>" . $row['address'] . "</td>";
-                                echo "<td>" . $row['dateAndTime'] . "</td>";
+                                echo "<td>" . $row['date'] . "</td>";
+                                echo "<td>" . $row['time'] . "</td>";
                                 echo "<td>" . $row['description'] . "</td>";
                                 echo "<td>" . $row['resolved'] . "</td>";
                                 echo "<td>";
@@ -95,8 +99,6 @@
                         echo "Oops! Something went wrong. Please try again later.";
                     }
 
-                    // Close connection
-                    //unset($db);
                     ?>
                 </div>
             </div>
