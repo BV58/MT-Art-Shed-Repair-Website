@@ -11,7 +11,7 @@ if (isset($_POST)) {
     $address = $_POST['address'];
     $password = $_POST['password'];
 
-    $sql = "INSERT INTO users (name, email, phone_number,. address, password ) VALUES(?,?,?,?,?)";
+    $sql = "INSERT INTO users (name, email, phone_number, address, password ) VALUES(?,?,?,?,?)";
     $stmtinsert = $db->prepare($sql);
     $result = $stmtinsert->execute([$name, $email, $phone_number, $address, $password]);
     if ($result) {

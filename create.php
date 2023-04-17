@@ -1,24 +1,21 @@
 <?php 
+session_start();
+require_once('config.php');
 
-include "config.php";
+  if (isset($_POST)) {
 
-  if (isset($_POST['submit'])) {
-
-    $first_name = $_POST['firstname'];
-
-    $last_name = $_POST['lastname'];
-
+    $name = $_POST['name'];
+    $phoneNum = $_POST['phoneNum'];
     $email = $_POST['email'];
+    $address = $_POST['address'];
+    $description = $_POST['appointment_description'];
+    $date = $_POST['date'];
+    $time = $_POST['time'];
 
-    $password = $_POST['password'];
+    $sql = "INSERT INTO appointments (name, email, phoneNum, address, dateAndTime, description) VALUES ($name, $email, $phoneNum, $address, $date, $description)";
+    $result = $db->exec($sql);
 
-    $gender = $_POST['gender'];
-
-    $sql = "INSERT INTO `users`(`firstname`, `lastname`, `email`, `password`, `gender`) VALUES ('$first_name','$last_name','$email','$password','$gender')";
-
-    $result = $conn->query($sql);
-
-    if ($result == TRUE) {
+    if ($result) {
 
       echo "New record created successfully.";
 
@@ -30,6 +27,8 @@ include "config.php";
 
     $conn->close(); 
 
+  }else{
+    echo "didnt work";
   }
 
 ?>
