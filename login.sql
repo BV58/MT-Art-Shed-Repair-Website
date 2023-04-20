@@ -3,7 +3,7 @@
 -- https://www.phpmyadmin.net/
 --
 -- Host: 127.0.0.1
--- Generation Time: Apr 03, 2023 at 07:00 PM
+-- Generation Time: Apr 20, 2023 at 08:32 PM
 -- Server version: 10.4.27-MariaDB
 -- PHP Version: 8.2.0
 
@@ -33,7 +33,8 @@ CREATE TABLE `appointments` (
   `email` varchar(319) NOT NULL,
   `phoneNum` varchar(16) NOT NULL,
   `address` varchar(128) NOT NULL,
-  `dateAndTime` datetime(6) NOT NULL,
+  `date` date NOT NULL,
+  `time` time NOT NULL,
   `description` mediumtext NOT NULL,
   `resolved` tinyint(1) NOT NULL DEFAULT 0
 ) ENGINE=InnoDB DEFAULT CHARSET=utf8mb4 COLLATE=utf8mb4_general_ci;
@@ -42,10 +43,10 @@ CREATE TABLE `appointments` (
 -- Dumping data for table `appointments`
 --
 
-INSERT INTO `appointments` (`id`, `name`, `email`, `phoneNum`, `address`, `dateAndTime`, `description`, `resolved`) VALUES
-(1, 'Jane Doe', 'janedoe@gmail.com', '8566859001', '18 PennyLane, Voorhees, New Jersey', '2023-03-31 15:23:27.000000', 'My shed needs repairs. The door is falling off. ', 0),
-(0, 'Brendan V', 'brendanveit@gmail.com', '8566859001', '18 Clearbrook Drive, Gibbsboro, NJ', '2023-04-20 12:08:11.000000', 'My shed fell apart. It needs to be rebuilt :(', 0),
-(2, 'Brendan V', 'brendanveit@gmail.com', '8566859001', '18 Clearbrook Drive, Gibbsboro, NJ', '2023-04-20 12:08:11.000000', 'My shed fell apart. It needs to be rebuilt :(', 0);
+INSERT INTO `appointments` (`id`, `name`, `email`, `phoneNum`, `address`, `date`, `time`, `description`, `resolved`) VALUES
+(1, 'Jane Doe', 'janedoe@gmail.com', '8566859001', '18 PennyLane, Voorhees, New Jersey', '2023-03-31', '00:00:00', 'My shed needs repairs. The door is falling off. ', 0),
+(2, 'Brendan V', 'brendanveit@gmail.com', '8566859001', '18 Clearbrook Drive, Gibbsboro, NJ', '2023-04-20', '00:00:00', 'My shed fell apart. It needs to be rebuilt :(', 0),
+(3, 'Brendan V', 'brendanveit@gmail.com', '8566859001', '18 Clearbrook Drive, Gibbsboro, NJ', '2023-04-20', '00:00:00', 'My shed fell apart. It needs to be rebuilt :(', 0);
 
 -- --------------------------------------------------------
 
@@ -91,6 +92,12 @@ INSERT INTO `users` (`id`, `name`, `email`, `phone_number`, `address`, `password
 --
 
 --
+-- Indexes for table `appointments`
+--
+ALTER TABLE `appointments`
+  ADD PRIMARY KEY (`id`);
+
+--
 -- Indexes for table `password_resets`
 --
 ALTER TABLE `password_resets`
@@ -105,6 +112,12 @@ ALTER TABLE `users`
 --
 -- AUTO_INCREMENT for dumped tables
 --
+
+--
+-- AUTO_INCREMENT for table `appointments`
+--
+ALTER TABLE `appointments`
+  MODIFY `id` int(11) NOT NULL AUTO_INCREMENT, AUTO_INCREMENT=5;
 
 --
 -- AUTO_INCREMENT for table `password_resets`
