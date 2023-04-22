@@ -102,7 +102,7 @@ if ($result) {
 
                     Email:<br>
 
-                    <input type="email" name="email" id="email" value="<?php echo $email; ?>">
+                    <input type="email" name="email" id="email" value="<?php echo $email; ?>" readonly>
 
                     <br>
 
@@ -115,10 +115,11 @@ if ($result) {
                     </textarea>
 
                     <label for="date">Date:</label>
-                    <input type="date" name="date" id="date" value="<?php echo $date; ?>">
+                    <input type="date" name="date" id="date" value="<?php echo $date; ?>"
+                        min="<?php echo date('Y-m-d', strtotime(date('Y-m-d') . ' +1 day')); ?>">
                     <br>
                     <label for="time">Time:</label>
-                    <input type="time" name="time" id="time" value="<?php echo $time; ?>">
+                    <input type="time" name="time" id="time" value="<?php echo $time; ?>" min="09:00" max="20:00">
 
                     <button type=" submit" id="submit">
                         <p>Update!</p>
