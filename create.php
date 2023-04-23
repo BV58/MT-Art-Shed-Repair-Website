@@ -16,9 +16,18 @@ if (isset($_POST)) {
   $date = $_POST['date'];
   $time = $_POST['time'];
 
-  $sql = "INSERT INTO appointments (name, email, phoneNum, address, date, time,description) VALUES (?, ?, ?, ?, ?, ?, ?)";
+
+
+  $sql = "INSERT INTO `appointments`(`name`, `email`, `phoneNum`, `address`, `date`, `time`, `description`) VALUES (:name,:email,:phoneNum,:address,:date,:time,:description)";
   $stmtinsert = $db->prepare($sql);
-  $result = $stmtinsert->execute([$name, $email, $phoneNum, $address, $date, $time, $description]);
+  $stmtinsert->bindParam(':name', $name);
+  $stmtinsert->bindParam(':email', $email);
+  $stmtinsert->bindParam(':phoneNum', $phoneNum);
+  $stmtinsert->bindParam(':address', $address);
+  $stmtinsert->bindParam(':date', $date);
+  $stmtinsert->bindParam(':time', $time);
+  $stmtinsert->bindParam(':description', $description);
+  $result = $stmtinsert->execute();
 
   if ($result) {
 

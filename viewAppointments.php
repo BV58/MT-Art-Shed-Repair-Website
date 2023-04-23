@@ -43,10 +43,15 @@
             <div class="row">
                 <div class="col-md-12">
                     <div class="mt-5 mb-3 clearfix">
+
                         <h2 class="pull-left">Appointment Details</h2>
                         <a href="appointment.php" class="btn btn-success pull-right"><i class="fa fa-plus"></i> Add
                             New
                             Appointment</a>
+                    </div>
+                    <div class="mt-3 mb-3 clearfix">
+                        <a href="CustomerAccountPage.php" class="btn btn-danger pull-right"><i class="fa fa-minus"></i>
+                            Return to Account Page</a>
                     </div>
                     <?php
                     session_start();

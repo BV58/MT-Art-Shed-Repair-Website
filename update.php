@@ -18,7 +18,6 @@ if (isset($_POST)) {
     $time = $_POST['time'];
     // $resolved = $_POST['resolved'];
     $sql = "UPDATE appointments SET name=:name, email=:email, address=:address, phoneNum=:phoneNum, description=:description, date=:date, time=:time, resolved=:resolved WHERE id=:id";
-    // $sql = "UPDATE `appointments` SET (name, email, phoneNum, address, date, time,description) VALUES (?, ?, ?, ?, ?, ?, ?) WHERE id = '$id'";
     $stmt = $db->prepare($sql);
     $stmt->bindParam(':id', $id);
     $stmt->bindParam(':name', $name);

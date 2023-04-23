@@ -11,9 +11,15 @@ if (isset($_POST)) {
     $address = $_POST['address'];
     $password = $_POST['password'];
 
-    $sql = "INSERT INTO users (name, email, phone_number, address, password ) VALUES(?,?,?,?,?)";
+    $sql = "INSERT INTO users (name, email, phone_number, address, password ) VALUES (:name,:email,:phonenumber,:address,:password)";
     $stmtinsert = $db->prepare($sql);
-    $result = $stmtinsert->execute([$name, $email, $phone_number, $address, $password]);
+    $stmtinsert = $db->prepare($sql);
+    $stmtinsert->bindParam(':name', $name);
+    $stmtinsert->bindParam(':email', $email);
+    $stmtinsert->bindParam(':phonenumber', $phone_number);
+    $stmtinsert->bindParam(':address', $address);
+    $stmtinsert->bindParam(':password', $password);
+    $result = $stmtinsert->execute();
     if ($result) {
         echo 'Successfully saved.';
     } else {

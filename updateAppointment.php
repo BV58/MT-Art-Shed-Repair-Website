@@ -96,7 +96,7 @@ if ($result) {
 
                     Phone Number:<br>
 
-                    <input type="text" name="phoneNum" id="phonenumber" value="<?php echo $phoneNum; ?>">
+                    <input type="tel" name="phoneNum" id="phonenumber" value="<?php echo $phoneNum; ?>">
 
                     <br>
 
@@ -150,7 +150,9 @@ if ($result) {
                     </button>
 
                 </fieldset>
-
+                <button id="cancel" onclick="window.location.href='viewAppointments.php';return false;">
+                    <p>Cancel</p>
+                </button>
             </form>
 
     </section>
