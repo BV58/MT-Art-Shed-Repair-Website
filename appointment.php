@@ -67,7 +67,8 @@ session_start();
 
           Phone Number:<br>
 
-          <input type="tel" name="phoneNum" id="phonenumber" required>
+          <input type="tel" name="phoneNum" id="phonenumber" pattern="[0-9]{3}-[0-9]{3}-[0-9]{4}"
+            placeholder="123-456-7890" required>
 
           <br>
 
