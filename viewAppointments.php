@@ -47,6 +47,7 @@
                     $temp = "SELECT * FROM users WHERE email = '$email'";
                     $result2 = $db->query($temp);
                     $row = $result2->fetch();
+                    $_SESSION['authLevel'] = $row['authLevel'];
                     if ($row['authLevel'] == 1) {
                         $sql = "SELECT * FROM appointments";
                     } else {
@@ -79,9 +80,13 @@
                                 echo "<td>" . $row['address'] . "</td>";
                                 echo "<td>" . $row['date'] . "</td>";
                                 $time = $row['time'];
-                                echo "<td>" . date('h:i', strtotime($time)) . "</td>";
+                                echo "<td>" . date('h:i A', strtotime($time)) . "</td>";
                                 echo "<td>" . $row['description'] . "</td>";
-                                echo "<td>" . $row['resolved'] . "</td>";
+                                if ($row['resolved'] == 0) {
+                                    echo "<td>Not Resolved</td>";
+                                } else {
+                                    echo "<td>Resolved</td>";
+                                }
                                 echo "<td>";
                                 echo '<a href="updateAppointment.php?id=' . $row['id'] . '" class="mr-3" title="Update Record" data-toggle="tooltip"><span class="fa fa-pencil"></span></a>';
                                 echo '<a href="delete.php?id=' . $row['id'] . '" title="Delete Record" data-toggle="tooltip"><span class="fa fa-trash"></span></a>';
