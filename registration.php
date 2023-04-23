@@ -39,7 +39,8 @@ require_once("config.php");
                         <input class="form-control" id="name" type="text" name="name" required>
 
                         <label for="phonenumber"><b>Phone Number</b></label>
-                        <input class="form-control" id="phonenumber" type="tel" name="phonenumber" required>
+                        <input class="form-control" id="phonenumber" type="tel" name="phonenumber"
+                            pattern="[0-9]{3}-[0-9]{3}-[0-9]{4}" required>
 
                         <label for="address"><b>Address</b></label>
                         <input class="form-control" id="address" type="text" name="address" required>

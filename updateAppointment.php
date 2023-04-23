@@ -96,7 +96,8 @@ if ($result) {
 
                     Phone Number:<br>
 
-                    <input type="tel" name="phoneNum" id="phonenumber" value="<?php echo $phoneNum; ?>">
+                    <input type="tel" name="phoneNum" id="phonenumber" pattern="[0-9]{3}-[0-9]{3}-[0-9]{4}"
+                        value="<?php echo $phoneNum; ?>">
 
                     <br>
 
