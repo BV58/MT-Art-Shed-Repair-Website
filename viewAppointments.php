@@ -1,14 +1,19 @@
 <!DOCTYPE html>
 <html lang="en">
 
+
 <head>
     <meta charset="UTF-8">
     <title>Appointments</title>
+
     <link rel="stylesheet" href="https://stackpath.bootstrapcdn.com/bootstrap/4.5.2/css/bootstrap.min.css">
     <link rel="stylesheet" href="https://maxcdn.bootstrapcdn.com/font-awesome/4.7.0/css/font-awesome.min.css">
     <script src="https://code.jquery.com/jquery-3.5.1.min.js"></script>
     <script src="https://cdn.jsdelivr.net/npm/popper.js@1.16.1/dist/umd/popper.min.js"></script>
     <script src="https://stackpath.bootstrapcdn.com/bootstrap/4.5.2/js/bootstrap.min.js"></script>
+    <link rel="stylesheet" href="https://cdn.datatables.net/1.13.4/css/jquery.dataTables.css" />
+
+    <script src="https://cdn.datatables.net/1.13.4/js/jquery.dataTables.js"></script>
     <style>
         .wrapper {
             width: 100%;
@@ -16,13 +21,18 @@
 
         }
 
-        table tr td:last-child {
+        /* table tr td:last-child {
             width: 120px;
-        }
+        } */
     </style>
     <script>
         $(document).ready(function () {
             $('[data-toggle="tooltip"]').tooltip();
+        });
+        $(document).ready(function () {
+            $('#myTable').DataTable({
+                "pageLength": 20
+            });
         });
     </script>
 </head>
@@ -55,7 +65,7 @@
                     }
                     if ($result = $db->query($sql)) {
                         if ($result->rowCount() > 0) {
-                            echo '<table class="table table-bordered table-striped">';
+                            echo '<table id="myTable" class="display">';
                             echo "<thead>";
                             echo "<tr>";
                             echo "<th>ID Number</th>";
@@ -97,6 +107,12 @@
                             echo "</table>";
                             // Free result set
                             unset($result);
+
+                            echo "<script type='text/JavaScript'> 
+                                    $(document).ready( function () {
+                                        $('#myTable').DataTable();
+                                    } );
+                                </script>";
                         } else {
                             echo '<div class="alert alert-danger"><em>No records were found.</em></div>';
                         }
@@ -105,6 +121,7 @@
                     }
 
                     ?>
+
                 </div>
             </div>
         </div>
