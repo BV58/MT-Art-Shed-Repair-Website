@@ -7,7 +7,6 @@ session_start();
 require_once('config.php');
 
 $id = trim($_GET["id"]);
-echo $id;
 $sql = "SELECT * FROM appointments WHERE id = '$id'";
 $result = $db->query($sql);
 
@@ -21,6 +20,7 @@ if ($result) {
     $time = $row['time'];
     $description = $row['description'];
     $resolved = $row['resolved'];
+    $authLevel = $row['resolved'];
     //header("Location: viewAppointments.php");
 
 
@@ -96,7 +96,7 @@ if ($result) {
 
                     Phone Number:<br>
 
-                    <input type="text" name="phoneNum" id="phonenumber" value="<?php echo $phoneNum; ?>">
+                    <input type="tel" name="phoneNum" id="phonenumber" value="<?php echo $phoneNum; ?>">
 
                     <br>
 
@@ -115,18 +115,44 @@ if ($result) {
                     </textarea>
 
                     <label for="date">Date:</label>
-                    <input type="date" name="date" id="date" value="<?php echo $date; ?>"
-                        min="<?php echo date('Y-m-d', strtotime(date('Y-m-d') . ' +1 day')); ?>">
+                    <?php
+                    if ($_SESSION['authLevel'] == 1) {
+                        ?>
+                        <input type="date" name="date" id="date" value="<?php echo $date; ?>">
+                        <?php
+                    } else {
+                        ?> <input type="date" name="date" id="date" value="<?php echo $date; ?>"
+                            min="<?php echo date('Y-m-d', strtotime(date('Y-m-d') . ' +1 day')); ?>">
+                        <?php
+                    }
+                    ?>
+                    <!-- <input type="date" name="date" id="date" value="<?php echo $date; ?>"
+                        min="<?php echo date('Y-m-d', strtotime(date('Y-m-d') . ' +1 day')); ?>"> -->
                     <br>
                     <label for="time">Time:</label>
                     <input type="time" name="time" id="time" value="<?php echo $time; ?>" min="09:00" max="20:00">
+                    <br>
+
+                    Resolved:<br>
+                    <?php
+                    if ($_SESSION['authLevel'] == 1) {
+                        ?>
+                        <input type="checkbox" name="resolved" id="resolved" value="<?php echo $resolved; ?>">
+                        <?php
+                    } else {
+                        ?><input type="checkbox" name="resolved" id="resolved" value="<?php echo $resolved; ?>">
+                        <?php
+                    }
+                    ?>
 
                     <button type=" submit" id="submit">
                         <p>Update!</p>
                     </button>
 
                 </fieldset>
-
+                <button id="cancel" onclick="window.location.href='viewAppointments.php';return false;">
+                    <p>Cancel</p>
+                </button>
             </form>
 
     </section>

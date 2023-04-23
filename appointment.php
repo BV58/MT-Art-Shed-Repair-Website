@@ -5,7 +5,7 @@ session_start();
 <html lang="en">
 
 <head>
-  <title>Create Appointment.</title>
+  <title>Create Appointment</title>
   <link rel="stylesheet" type="text/css" href="appointment.css" />
   <link rel="icon" type="image/x-icon" href="\images\favicon.ico">
 </head>
@@ -67,7 +67,7 @@ session_start();
 
           Phone Number:<br>
 
-          <input type="text" name="phoneNum" id="phonenumber" required>
+          <input type="tel" name="phoneNum" id="phonenumber" required>
 
           <br>
 
@@ -95,7 +95,9 @@ session_start();
           <button type="submit" id="submit">
             <p>Create!</p>
           </button>
-
+          <button id="cancel" onclick="window.location.href='viewAppointments.php';return false;">
+            <p>Cancel</p>
+          </button>
         </fieldset>
 
       </form>

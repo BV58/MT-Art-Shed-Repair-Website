@@ -9,7 +9,6 @@ require_once('config.php');
 if (isset($_POST)) {
 
     $id = $_POST['id'];
-    echo $id;
     $name = $_POST['name'];
     $phoneNum = $_POST['phoneNum'];
     $email = $_POST['email'];
@@ -17,8 +16,8 @@ if (isset($_POST)) {
     $description = $_POST['appointment_description'];
     $date = $_POST['date'];
     $time = $_POST['time'];
-    $sql = "UPDATE appointments SET name=:name, email=:email, address=:address, phoneNum=:phoneNum, description=:description, date=:date, time=:time WHERE id=:id";
-    // $sql = "UPDATE `appointments` SET (name, email, phoneNum, address, date, time,description) VALUES (?, ?, ?, ?, ?, ?, ?) WHERE id = '$id'";
+    // $resolved = $_POST['resolved'];
+    $sql = "UPDATE appointments SET name=:name, email=:email, address=:address, phoneNum=:phoneNum, description=:description, date=:date, time=:time, resolved=:resolved WHERE id=:id";
     $stmt = $db->prepare($sql);
     $stmt->bindParam(':id', $id);
     $stmt->bindParam(':name', $name);
@@ -28,14 +27,17 @@ if (isset($_POST)) {
     $stmt->bindParam(':description', $description);
     $stmt->bindParam(':date', $date);
     $stmt->bindParam(':time', $time);
+    if (isset($_POST['resolved'])) {
+        $resolved = 1;
+    } else {
+        $resolved = 0;
+    }
+    $stmt->bindParam(':resolved', $resolved);
 
     $result = $stmt->execute();
 
     if ($result) {
-
         header("Location: viewAppointments.php");
-
-
     } else {
         echo "Error:" . $sql . "<br>";
     }
