@@ -39,7 +39,7 @@ require_once("config.php");
                         <input class="form-control" id="name" type="text" name="name" required>
 
                         <label for="phonenumber"><b>Phone Number</b></label>
-                        <input class="form-control" id="phonenumber" type="text" name="phonenumber" required>
+                        <input class="form-control" id="phonenumber" type="tel" name="phonenumber" required>
 
                         <label for="address"><b>Address</b></label>
                         <input class="form-control" id="address" type="text" name="address" required>
@@ -51,6 +51,9 @@ require_once("config.php");
                         <input class="form-control" id="password" type="password" name="password" required>
                         <hr class="mb-3">
                         <input class="btn btn-primary" type="submit" id="register" name="create" value="Sign Up!">
+                        <button id="cancel" onclick="window.location.href='index.html';return false;">
+                            <p>Cancel</p>
+                        </button>
                     </div>
                 </div>
             </div>

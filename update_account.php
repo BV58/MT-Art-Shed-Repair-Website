@@ -9,7 +9,6 @@ session_start();
 
 // Check authentication and authorization here
 if (!isset($_SESSION['userlogin']) || empty($_SESSION['userlogin'])) {
-    // Redirect the user to the login page
     header("Location: login.php");
     exit();
 }
@@ -19,19 +18,19 @@ $userlogin = $_SESSION['userlogin']['name'];
 $sql = "SELECT * FROM users WHERE name=:userlogin";
 $stmt = $db->prepare($sql);
 $stmt->bindParam(':userlogin', $userlogin);
-if (!$stmt->execute()){
+if (!$stmt->execute()) {
     // handle the error here, e.g. log it or display an error message
     die("Error executing query: " . $stmt->errorInfo()[2]);
 }
 $row = $stmt->fetch(PDO::FETCH_ASSOC);
 
-if ($row){
+if ($row) {
     $id = $row['id'];
     $name = $row['name'];
     $email = $row['email'];
     $phone_number = $row['phone_number'];
     $address = $row['address'];
-} else{
+} else {
     echo "Invalid user ID.";
     exit();
 }
@@ -68,40 +67,43 @@ if ($_SERVER["REQUEST_METHOD"] == "POST") {
 ?>
 <!DOCTYPE html>
 <html>
-    <head>
-        <title>User Edit Account Form</title>
-    </head>
-    <body>
-        <h2>User Edit Account Form</h2>
-        <form method="post">
-            <fieldset>
-                <legend>Account Information</legend>
-                <label for="name">Name:</label><br>
-                <input type="text" id="name" name="name" value="<?php echo $name; ?>">
-                <input type="hidden" name="id" value="<?php echo $id; ?>">
-                <br>
-                <label for="email">Email:</label><br>
-                <input type="email" id="email" name="email" value="<?php echo $email; ?>">
-                <br>
-                <label for="phone_number">Phone Number:</label><br>
-                <input type="number" id="phone_number" name="phone_number" value="<?php echo $phone_number; ?>">
-                <br>
-                <label for="address">Address:</label><br>
-                <input type="text" id="address" name="address" value="<?php echo $address; ?>">
-                <br><br>
-                <input type="submit" value="Update" name="update">
-            </fieldset>
-        </form>
-    </body>
+
+<head>
+    <title>User Edit Account Form</title>
+</head>
+
+<body>
+    <h2>User Edit Account Form</h2>
+    <form method="post">
+        <fieldset>
+            <legend>Account Information</legend>
+            <label for="name">Name:</label><br>
+            <input type="text" id="name" name="name" value="<?php echo $name; ?>">
+            <input type="hidden" name="id" value="<?php echo $id; ?>">
+            <br>
+            <label for="email">Email:</label><br>
+            <input type="email" id="email" name="email" value="<?php echo $email; ?>">
+            <br>
+            <label for="phone_number">Phone Number:</label><br>
+            <input type="number" id="phone_number" name="phone_number" value="<?php echo $phone_number; ?>">
+            <br>
+            <label for="address">Address:</label><br>
+            <input type="text" id="address" name="address" value="<?php echo $address; ?>">
+            <br><br>
+            <input type="submit" value="Update" name="update">
+        </fieldset>
+    </form>
+</body>
+
 </html>
 <?php
-if ($row){
+if ($row) {
     $id = $row['id'];
     $name = $row['name'];
     $email = $row['email'];
     $phone_number = $row['phone_number'];
     $address = $row['address'];
-} else{
+} else {
     echo "Invalid user ID.";
 }
 ?>

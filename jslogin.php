@@ -5,15 +5,17 @@ require_once('config.php');
 $username = $_POST['username'];
 $password = $_POST['password'];
 
-$sql = "SELECT * FROM users WHERE email = ? AND password = ? LIMIT 1";
+$sql = "SELECT * FROM users WHERE email=:email AND password=:password LIMIT 1";
 $stmselect = $db->prepare($sql);
-$result = $stmselect->execute([$username, $password]);
+$stmselect->bindParam(':email', $username);
+$stmselect->bindParam(':password', $password);
+$result = $stmselect->execute();
 $_SESSION['email'] = "";
 if ($result) {
     $user = $stmselect->fetch(PDO::FETCH_ASSOC);
     if ($stmselect->rowCount() > 0) {
         $_SESSION['userlogin'] = $user;
-        $_SESSION['phoneNum'] = $username;
+        $_SESSION['email'] = $username;
         echo '1';
     } else {
         echo 'fail';
