@@ -1,50 +1,51 @@
 <?php
 // Include config file
 require_once "config.php";
- 
+
 // Processing form data when form is submitted
-if(isset($_POST["id"]) && !empty($_POST["id"])){
+if (isset($_POST["id"]) && !empty($_POST["id"])) {
     // Get hidden input value
     $id = $_POST["id"];
-    
+
     // Prepare a delete statement
     $sql = "DELETE FROM appointments WHERE id = :id";
-    
-    if($stmt = $db->prepare($sql)){
+
+    if ($stmt = $db->prepare($sql)) {
         // Bind variables to the prepared statement as parameters
         $stmt->bindParam(":id", $param_id);
-        
+
         // Set parameters
         $param_id = $id;
-        
+
         // Attempt to execute the prepared statement
-        if($stmt->execute()){
+        if ($stmt->execute()) {
             // Records deleted successfully. Redirect to landing page
             header("location: viewAppointments.php");
             exit();
-        } else{
+        } else {
             header("location: error.php");
             exit();
         }
     }
-     
+
     // Close statement
     unset($stmt);
-    
+
     // Close connection
     unset($db);
-} else{
+} else {
     // Check existence of id parameter
-    if(empty(trim($_GET["id"]))){
+    if (empty(trim($_GET["id"]))) {
         // URL doesn't contain id parameter. Redirect to error page
-        header("location: error.php");
+        header("location:  error.php");
         exit();
     }
 }
 ?>
- 
+
 <!DOCTYPE html>
 <html lang="en">
+
 <head>
     <meta charset="UTF-8">
     <title>Delete Appointment</title>
@@ -54,6 +55,7 @@ if(isset($_POST["id"]) && !empty($_POST["id"])){
     <script src="https://cdn.jsdelivr.net/npm/popper.js@1.16.1/dist/umd/popper.min.js"></script>
     <script src="https://stackpath.bootstrapcdn.com/bootstrap/4.5.2/js/bootstrap.min.js"></script>
 </head>
+
 <body>
     <div class="wrapper">
         <div class="container-fluid">
@@ -64,7 +66,7 @@ if(isset($_POST["id"]) && !empty($_POST["id"])){
                     </div>
                     <form action="<?php echo htmlspecialchars($_SERVER["PHP_SELF"]); ?>" method="post">
                         <div class="alert alert-danger">
-                            <input type="hidden" name="id" value="<?php echo trim($_GET["id"]); ?>"/>
+                            <input type="hidden" name="id" value="<?php echo trim($_GET["id"]); ?>" />
                             <p>Are you sure you want to delete this appointment?</p>
                             <p>
                                 <input type="submit" value="Yes" class="btn btn-danger">
@@ -73,8 +75,9 @@ if(isset($_POST["id"]) && !empty($_POST["id"])){
                         </div>
                     </form>
                 </div>
-            </div>        
+            </div>
         </div>
     </div>
 </body>
+
 </html>
