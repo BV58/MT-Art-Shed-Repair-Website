@@ -104,7 +104,7 @@
                                 }
                                 echo "<td>";
                                 echo '<a href="updateAppointment.php?id=' . $row['id'] . '" class="mr-3" title="Update Record" data-toggle="tooltip"><span class="fa fa-pencil"></span></a>';
-                                echo '<a href="delete.php?id=' . $row['id'] . '" title="Delete Record" data-toggle="tooltip"><span class="fa fa-trash"></span></a>';
+                                echo '<a href="deleteAppointment.php?id=' . $row['id'] . '" title="Delete Record" data-toggle="tooltip"><span class="fa fa-trash"></span></a>';
                                 echo "</td>";
                                 echo "</tr>";
                             }
@@ -112,12 +112,6 @@
                             echo "</table>";
                             // Free result set
                             unset($result);
-
-                            echo "<script type='text/JavaScript'> 
-                                    $(document).ready( function () {
-                                        $('#myTable').DataTable();
-                                    } );
-                                </script>";
                         } else {
                             echo '<div class="alert alert-danger"><em>No records were found.</em></div>';
                         }
