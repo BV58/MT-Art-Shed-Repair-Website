@@ -1,0 +1,109 @@
+<!DOCTYPE html>
+<html lang="en">
+
+<head>
+  <meta charset="UTF-8">
+  <meta name="viewport" content="width=device-width, initial-scale=1.0">
+  <link rel="stylesheet" href="gallery.css">
+  <link rel="icon" type="image/x-icon" href="\images\favicon.ico">
+  <title>GALLERY.</title>
+</head>
+
+<body>
+    <!-- Header -->
+  <section id="header">
+    <div class="header container">
+      <div class="nav-bar">
+        <div class="brand">
+          <a href="#hero">
+            <h1><span>MT ART</span> SHED REPAIR</h1>
+          </a>
+        </div>
+        <div class="nav-list">
+          <div class="sidebar">
+            <div class="bar"></div>
+          </div>
+          <ul>
+            <li><a href="index.html" data-after="Home">Home</a></li>
+            <li><a href="index.html#services" data-after="Service">Services</a></li>
+            <li><a href="index.html#about" data-after="About">About</a></li>
+            <li><a href="index.html#contact" data-after="Contact">Contact</a></li>
+            <li><a href="login.php" data-after="LOG IN">Log In</a></li>
+            <li><a href="FAQ.html" data-after="FAQ">FAQ</a></li>
+          </ul>
+        </div>
+      </div>
+    </div>
+  </section>
+  <!-- End Header -->
+
+  <!-- Before and After Photo Slider -->
+  <div>
+    <h1 class="section-title"><b>gallery</b></h1>
+  </div>
+  <main>
+    <div class="containerphoto">
+      <div class="image-container">
+        <img
+          class="image-before slider-image"
+         src="\images\1.jpg"
+          alt="before"
+        />
+        <img
+          class="image-after slider-image"
+          src="\images\2.jpg"
+          alt="after"
+        />
+      </div>
+      <!-- step="10" -->
+      <input
+        type="range"
+        min="0"
+        max="100"
+        value="50"
+        aria-label="Percentage of before photo shown"
+        class="slider"
+      />
+      <div class="slider-line" aria-hidden="true"></div>
+      <div class="slider-button" aria-hidden="true">
+        <svg xmlns="http://www.w3.org/2000/svg" viewBox="0 0 256 256"><rect width="30" height="30" fill="none"/><polyline points="176 144 208 176 176 208" fill="none" stroke="currentColor" stroke-linecap="round" stroke-linejoin="round" stroke-width="16"/><line x1="48" y1="176" x2="208" y2="176" fill="none" stroke="currentColor" stroke-linecap="round" stroke-linejoin="round" stroke-width="16"/><polyline points="80 112 48 80 80 48" fill="none" stroke="currentColor" stroke-linecap="round" stroke-linejoin="round" stroke-width="16"/><line x1="208" y1="80" x2="48" y2="80" fill="none" stroke="currentColor" stroke-linecap="round" stroke-linejoin="round" stroke-width="16"/></svg>
+      </div>
+    </div>
+  </main>
+  <!-- End Before and After Photo Slider -->
+
+  <!-- Gallery -->
+<div class="grid">
+  <div class ="gallery">
+    <img src = "/images/5.png">
+    <img src = "/images/6.png">
+    <img src = "/images/7.png">
+    <img src = "/images/8.png">
+    <img src = "/images/9.png">
+    <img src = "/images/10.png">
+  </div>
+</div>
+  <!-- Gallery -->
+
+    <!-- Footer -->
+  <section id="footer">
+    <div class="footer container">
+      <div class="brand">
+        <h1><span>MT ART</h1>
+      </div>
+      <h2>Experienced, Knowledgeable, Trustworthy</h2>
+      <div class="social-icon">
+        <div class="social-item">
+            <a href="https://m.facebook.com/profile.php?id=100042169879013"><img src="https://img.icons8.com/bubbles/100/000000/facebook-new.png" /></a>
+        </div>
+        <div class="social-item">
+          <a href="https://www.instagram.com/mtartshedrepair/"><img src="https://img.icons8.com/bubbles/100/000000/instagram-new.png" /></a>
+        </div>
+      </div>
+    </div>
+  </section>
+  <!-- End Footer -->
+
+  <script src="gallery.js" defer></script>
+
+</body>
