@@ -126,7 +126,7 @@ if (isset($_SESSION['userlogin'])) {
 				<input type="password" name="password" id="password">
 			</label>
 			<button class="submit" type="button" id="login">Sign In</button>
-			<p class="forgot-pass">Forgot Password ?</p>
+			<!-- <p class="forgot-pass">Forgot Password ?</p> -->
 		</div>
 
 		<!--END SIGN IN/LOG IN -->

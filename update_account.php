@@ -85,7 +85,7 @@ if ($_SERVER["REQUEST_METHOD"] == "POST") {
             <input type="email" id="email" name="email" value="<?php echo $email; ?>">
             <br>
             <label for="phone_number">Phone Number:</label><br>
-            <input type="number" id="phone_number" name="phone_number" value="<?php echo $phone_number; ?>">
+            <input type="text" id="phone_number" name="phone_number" value="<?php echo $phone_number; ?>">
             <br>
             <label for="address">Address:</label><br>
             <input type="text" id="address" name="address" value="<?php echo $address; ?>">
