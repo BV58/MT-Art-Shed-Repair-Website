@@ -1,0 +1,133 @@
+<!DOCTYPE html>
+<html lang="en">
+  <head>
+      <link rel="icon" type="image/x-icon" href="\images\favicon.ico">
+    <meta charset="UTF-8" />
+    <meta http-equiv="X-UA-Compatible" content="IE=edge" />
+    <meta name="viewport" content="width=device-width, initial-scale=1.0" />
+    <title>Frequently Asked Questions</title>
+    <link rel="stylesheet" href="FAQ.css" />
+    <link
+      rel="stylesheet"
+      crossorigin="anonymous"
+      referrerpolicy="no-referrer"
+    />
+  </head>
+  <body>
+
+        <!-- NAVI HEADER -->
+        <section id="header">
+          <div class="header container">
+            <div class="nav-bar">
+              <div class="brand">
+                <a href="#hero">
+                  <h1><span>MT ART</span> SHED REPAIR</h1>
+                </a>
+              </div>
+              <div class="nav-list">
+                <div class="sidebar">
+                  <div class="bar"></div>
+                </div>
+                <ul>
+                  <li><a href="index.html" data-after="Home">Home</a></li>
+                  <li><a href="index.html#services" data-after="Service">Services</a></li>
+                  <li><a href="index.html#about" data-after="About">About</a></li>
+                  <li><a href="index.html#contact" data-after="Contact">Contact</a></li>
+                  <li><a href="login.php" data-after="LOG IN">Log In</a></li>
+                  <li><a href="#FAQ" data-after="FAQ">FAQ</a></li>
+                </ul>
+              </div>
+            </div>
+          </div>
+        </section>
+        <!-- END OF NAVI HEADER -->
+      
+    <div class="content">
+      <h1>Frequently Asked Questions</h1>
+
+      <div class="faq">
+        <button class="accordion">
+          What does MT ART do?
+          <i class="fa-solid fa-chevron-down"></i>
+        </button>
+        <div class="panel">
+          <p>
+            We repair sheds! All work is performed by professionals with 10 plus years of experience.
+          </p>
+        </div>
+      </div>
+
+      <div class="faq">
+        <button class="accordion">
+          What type of sheds do you work on?
+          <i class="fa-solid fa-chevron-down"></i>
+        </button>
+        <div class="panel">
+          <p>
+            We repair standard wooden sheds. We <b>do not</b> repair on metal or rubber sheds. 
+          </p>
+        </div>
+      </div>
+
+      <div class="faq">
+        <button class="accordion">
+          Do you do teardowns?
+          <i class="fa-solid fa-chevron-down"></i>
+        </button>
+        <div class="panel">
+          <p>
+            Yes! We do teardowns for all types of sheds: wooden, metal, and rubber.
+          </p>
+        </div>
+      </div>
+
+      <div class="faq">
+        <button class="accordion">
+          Are estimates free?
+          <i class="fa-solid fa-chevron-down"></i>
+        </button>
+        <div class="panel">
+          <p>
+            All initial estimates performed by our team are entirely free!
+          </p>
+        </div>
+      </div>
+
+      <div class="faq">
+        <button class="accordion">
+          What areas do you service?
+          <i class="fa-solid fa-chevron-down"></i>
+        </button>
+        <div class="panel">
+          <p>
+           We service the south jersey area.
+          </p>
+        </div>
+      </div>
+    </div>
+
+    <script>
+      var acc = document.getElementsByClassName("accordion");
+      var i;
+
+      for (i = 0; i < acc.length; i++) {
+        acc[i].addEventListener("click", function () {
+          this.classList.toggle("active");
+          this.parentElement.classList.toggle("active");
+
+          var panel = this.nextElementSibling;
+
+          if (panel.style.display === "block") {
+            panel.style.display = "none";
+          } else {
+            panel.style.display = "block";
+          }
+        });
+      }
+    </script>
+
+    
+  <script src="./app.js"></script>
+    
+  </body>
+</html>
